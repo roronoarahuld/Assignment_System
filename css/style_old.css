@@ -1,0 +1,778 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+@font-face{
+	font-family: Century;
+	src: url("../fonts/CenturyGothic.ttf");
+}
+@font-face{
+	font-family: Segoe;
+	src: url("../fonts/SegoeUI.ttf");
+}
+@font-face{
+	font-family: SegoeB;
+	src: url("../fonts/SegoeBold.ttf");
+}
+.width_container{
+	width: 95%;
+	margin: 0 auto;
+	display: block;
+}
+#student-dashboard, #expert-dashboard, #admin-dashboard, #submit-assignments, #pending-assignments,
+#complete-assignments, #completed-assignments, #create-assignments, #view-assignments {
+	display: flex;
+}
+.sidebar{
+	flex-basis: 10%;
+	height: 100vh;
+}
+.content-panel{
+	flex-basis: 90%;
+	background-color: #e4ebff;
+}
+.sidebar .logo{
+	height: 60px;
+	background-color: #4977fc;
+}
+.sidebar .sidebar-menu{
+	background-color: #fff;
+	text-align: center;
+}
+.sidebar .sidebar-menu img{
+	width: 30%;
+	display: block;
+	margin: 0 auto;
+}
+.sidebar .sidebar-menu nav{
+	padding: 20% 5%;	
+}
+.sidebar .sidebar-menu nav li{
+	padding: 20px 0;
+}
+.sidebar .sidebar-menu nav li a{
+	text-decoration: none;
+	transition: 0.3s ease-in-out;
+}
+.sidebar .sidebar-menu nav li a svg{
+	fill: #9f9f9f;
+	width: 25%;
+}
+.sidebar .sidebar-menu nav li a span{
+	color: #9f9f9f;
+	font: 15px/19px Segoe;
+	padding-top: 5px;
+	display: block;
+}
+.sidebar .sidebar-menu nav li a:hover span{
+	color: #4977fc;
+}
+.sidebar .sidebar-menu nav li a:hover svg{
+	fill: #4977fc;
+}
+.content-panel .notification-bar{
+	height: 60px;
+	background-color: #fff;
+}
+.content-panel .notification-bar .notify-cont nav{
+	display: inline-block;
+	width: 100%;
+}
+.content-panel .notification-bar .notify-cont nav ul{
+	width: 20%;
+	float: right;
+	list-style: none;
+	height: 60px;
+	margin-right: 80px;
+}
+.content-panel .notification-bar .notify-cont nav ul a svg{
+	width: 40%;
+	fill: #9f9f9f;
+}
+.content-panel .notification-bar .notify-cont nav ul li a .msg_count{
+	font: 8px/12px Segoe;
+    color: #fff;
+    display: block;
+    position: absolute;
+    background-color: #4977fc;
+    border-radius: 50px;
+    padding: 3px 7px;
+    top: 6px;
+    left: 20px;
+}
+.content-panel .notification-bar .notify-cont nav ul li span{
+	display: block;
+	font: 15px/35px Segoe;
+	color: #9f9f9f;
+	cursor: pointer;
+}
+.content-panel .notification-bar .notify-cont nav ul li{
+	float: left;
+	width: 30%;
+	padding: 12px 0;
+	box-sizing: border-box;
+	position: relative;
+}
+.content-panel .notification-bar .notify-cont nav ul li#notify-sub .notify-drop{
+	width: 350px;
+    margin: 0;
+    position: absolute;
+    right: -100px;
+    display: none;
+    height: auto;
+}
+.content-panel .notification-bar .notify-cont nav ul li#notify-sub .notify-drop li{
+	background: #fff;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    padding: 12px 12px;
+}
+.content-panel .notification-bar .notify-cont nav ul li#notify-sub .notify-drop li span{
+	padding: 12px;
+    background: #4977fc;
+    border-radius: 5px;
+    color: #fff;
+    position: relative;
+    font: 12px/16px Segoe;
+    margin-top: 10px;
+}
+.content-panel .notification-bar .notify-cont nav ul li#notify-sub .notify-drop li span i{
+	position: absolute;
+	right: 10px;
+	top: 15px;
+}
+.content-panel .notification-bar .notify-cont nav ul li#name-sub .name-drop{
+	width: 120px;
+    margin: 10px 0 0;
+    background: #fff;
+    height: auto;
+    position: absolute;
+    right: -20px;
+    display: none;
+}
+.content-panel .notification-bar .notify-cont nav ul li#name-sub .name-drop li{
+	float: none;
+    margin: 0;
+    width: 100%;
+    padding: 8px 20px;
+}
+.content-panel .notification-bar .notify-cont nav ul li#name-sub .name-drop li a{
+	text-decoration: none;
+	color: #9f9f9f;
+	font: 13px/17px Segoe;
+	transition: 0.3s ease-in-out;
+}
+.content-panel .notification-bar .notify-cont nav ul li#name-sub .name-drop li a:hover{
+	color: #4977fc;
+}
+.content-area{
+	box-sizing: border-box;
+	padding: 20px;
+}
+table{
+	width: 100%;
+	font: 14px/18px Segoe;
+	border-collapse: collapse;
+}
+table thead{
+	background-color: #4977fc;
+	color: #fff;
+}
+table thead tr td{
+	box-sizing: border-box;
+	padding: 12px;
+}
+table tbody{
+	color: #9f9f9f;
+	background-color: #fff;
+	border: 1px solid #4977fc;
+}
+table tbody tr td{
+	box-sizing: border-box;
+	padding: 12px;
+	border: 1px solid #4977fc;
+}
+table tbody tr td a, table tbody tr td span{
+	text-decoration: none;
+	display: inline;
+	color: #4977fc;
+}
+.content-row .back-btn{
+	text-decoration: none;
+	display: block;
+	margin-bottom:10px;
+	color: #4977fc;
+	font: 15px/20px Segoe;
+}
+/*-----------------------------Student Dashboard-----------------------------------*/
+#student-dashboard .content-area .content-row{
+	width: 100%;
+    margin: 0;
+    display: flex;
+    margin: 0 auto 20px;
+}
+#student-dashboard .content-area .left-panel-cont{
+	flex-basis: 25%;
+	background-color: #fff;
+	padding: 18px;
+	box-sizing: border-box;
+	text-align: center;
+}
+#student-dashboard .content-area .left-panel-cont h4{
+	font: 36px/40px Segoe;
+	color: #9f9f9f;
+	padding: 25px 0 0;
+}
+#student-dashboard .content-area .left-panel-cont svg{
+	width: 40%;
+	fill: #9f9f9f;
+}
+#student-dashboard .content-area .left-panel-cont .help-h4{
+	font: 36px/40px Segoe;
+	color: #9f9f9f;
+	padding: 10px 0 ;
+	display: block;
+}
+#student-dashboard .content-area .left-panel-cont h3{
+	font: 50px/54px SegoeB;
+	color: #9f9f9f;
+	padding: 5px 0 25px;
+}
+#student-dashboard .content-area .left-panel-cont a{
+	font: 14px/18px Segoe;
+	color: #fff;
+	display: inline-block;
+	text-align: center;
+	padding: 8px 35px;
+	background-color: #4977fc;
+	text-decoration: none;
+	border-radius: 20px;
+	margin-bottom: 10px;
+	border: 2px solid #4977fc;
+	transition: 0.5s ease-in-out;
+}
+#student-dashboard .content-area .left-panel-cont a:hover{
+	background-color: #fff;
+	color: #4977fc;
+}
+#student-dashboard .content-area .right-panel-cont{
+	flex-basis: 75%;
+	background-color: #fff;
+	padding: 18px;
+	margin-left: 20px;
+	box-sizing: border-box;
+}
+#student-dashboard .content-area .right-panel-cont .submitted-assignment span{
+	font: 14px/18px Segoe;
+	color: #9f9f9f;
+	display: block;
+}
+#student-dashboard .content-area .right-panel-cont .submitted-assignment .list-assign{
+	display: flex;
+	width: 100%;
+}
+#student-dashboard .content-area .right-panel-cont .submitted-assignment .list-assign .list-div{
+	flex-basis: 30%;
+	padding: 20px;
+	background-color: #fff;
+	box-shadow: 0px 0px 6px rgba(17,119,252,0.3);
+	text-align: center;
+	margin: 15px;
+}
+#student-dashboard .content-area .submitted-assignment .list-assign .list-div .file-img{
+	font-size: 46px;
+	color: #4977fc;
+}
+#student-dashboard .content-area .submitted-assignment .list-assign .list-div .file-title a{
+	display: block;
+	margin: 8px 0 5px;
+	font: 16px/20px Segoe;
+	color: #4977fc;
+	text-decoration: none;
+	float: none; 	
+}
+#student-dashboard .content-area .submitted-assignment a{
+	text-decoration: none;
+	float: right;
+	font: 14px/18px Segoe;
+	color: #4977fc;
+}
+#student-dashboard .content-area .right-panel-cont .pending-assignment span{
+	font: 14px/18px Segoe;
+	color: #9f9f9f;
+	display: block;
+}
+#student-dashboard .content-area .right-panel-cont .pending-assignment .list-assign{
+	display: flex;
+	width: 100%;
+}
+#student-dashboard .content-area .right-panel-cont .pending-assignment .list-assign .list-div{
+	flex-basis: 30%;
+	padding: 20px;
+	background-color: #fff;
+	box-shadow: 0px 0px 6px rgba(17,119,252,0.3);
+	text-align: center;
+	margin: 15px;
+}
+#student-dashboard .content-area .pending-assignment .list-assign .list-div .file-img{
+	font-size: 46px;
+	color: #4977fc;
+}
+#student-dashboard .content-area .pending-assignment .list-assign .list-div .file-title a{
+	display: block;
+	margin: 8px 0 5px;
+	font: 16px/20px Segoe;
+	color: #4977fc;
+	text-decoration: none;
+	float: none; 	
+}
+#student-dashboard .content-area .pending-assignment a{
+	text-decoration: none;
+	float: right;
+	font: 14px/18px Segoe;
+	color: #4977fc;
+}
+/*-----------------------------Expert Dashboard-----------------------------------*/
+#expert-dashboard .content-area .content-row{
+	width: 100%;
+    margin: 0;
+    display: flex;
+    margin: 0 auto 20px;
+}
+#expert-dashboard .content-area .left-panel-cont{
+	flex-basis: 25%;
+	background-color: #fff;
+	padding: 18px;
+	box-sizing: border-box;
+	text-align: center;
+}
+#expert-dashboard .content-area .left-panel-cont h4{
+	font: 36px/40px Segoe;
+	color: #9f9f9f;
+	padding: 25px 0 0;
+}
+#expert-dashboard .content-area .left-panel-cont svg{
+	width: 40%;
+	fill: #9f9f9f;
+}
+#expert-dashboard .content-area .left-panel-cont .help-h4{
+	font: 36px/40px Segoe;
+	color: #9f9f9f;
+	padding: 10px 0 ;
+	display: block;
+}
+#expert-dashboard .content-area .left-panel-cont h3{
+	font: 50px/54px SegoeB;
+	color: #9f9f9f;
+	padding: 5px 0 25px;
+}
+#expert-dashboard .content-area .left-panel-cont a{
+	font: 14px/18px Segoe;
+	color: #fff;
+	display: inline-block;
+	text-align: center;
+	padding: 8px 35px;
+	background-color: #4977fc;
+	text-decoration: none;
+	border-radius: 20px;
+	margin-bottom: 10px;
+	border: 2px solid #4977fc;
+	transition: 0.5s ease-in-out;
+}
+#expert-dashboard .content-area .left-panel-cont a:hover{
+	background: #fff;
+	color: #4977fc;
+}
+#expert-dashboard .content-area .right-panel-cont{
+	flex-basis: 75%;
+	background-color: #fff;
+	padding: 18px;
+	margin-left: 20px;
+	box-sizing: border-box;
+}
+#expert-dashboard .content-area .right-panel-cont .submitted-assignment span{
+	font: 14px/18px Segoe;
+	color: #9f9f9f;
+	display: block;
+}
+#expert-dashboard .content-area .right-panel-cont .submitted-assignment .list-assign{
+	display: flex;
+	width: 100%;
+}
+#expert-dashboard .content-area .right-panel-cont .submitted-assignment .list-assign .list-div{
+	flex-basis: 30%;
+	padding: 20px;
+	background-color: #fff;
+	box-shadow: 0px 0px 6px rgba(17,119,252,0.3);
+	text-align: center;
+	margin: 15px;
+}
+#expert-dashboard .content-area .submitted-assignment .list-assign .list-div .file-img{
+	font-size: 46px;
+	color: #4977fc;
+}
+#expert-dashboard .content-area .submitted-assignment .list-assign .list-div .file-title a{
+	display: block;
+	margin: 8px 0 5px;
+	font: 16px/20px Segoe;
+	color: #4977fc;
+	text-decoration: none;
+	float: none; 	
+}
+#expert-dashboard .content-area .submitted-assignment a{
+	text-decoration: none;
+	float: right;
+	font: 14px/18px Segoe;
+	color: #4977fc;
+}
+#expert-dashboard .content-area .right-panel-cont .pending-assignment span{
+	font: 14px/18px Segoe;
+	color: #9f9f9f;
+	display: block;
+}
+#expert-dashboard .content-area .right-panel-cont .pending-assignment .list-assign{
+	display: flex;
+	width: 100%;
+}
+#expert-dashboard .content-area .right-panel-cont .pending-assignment .list-assign .list-div{
+	flex-basis: 30%;
+	padding: 20px;
+	background-color: #fff;
+	box-shadow: 0px 0px 6px rgba(17,119,252,0.3);
+	text-align: center;
+	margin: 15px;
+}
+#expert-dashboard .content-area .pending-assignment .list-assign .list-div .file-img{
+	font-size: 46px;
+	color: #4977fc;
+}
+#expert-dashboard .content-area .pending-assignment .list-assign .list-div .file-title a{
+	display: block;
+	margin: 8px 0 5px;
+	font: 16px/20px Segoe;
+	color: #4977fc;
+	text-decoration: none;
+	float: none; 	
+}
+#expert-dashboard .content-area .pending-assignment a{
+	text-decoration: none;
+	float: right;
+	font: 14px/18px Segoe;
+	color: #4977fc;
+}
+/*-----------------------------Admin Dashboard-----------------------------------*/
+#admin-dashboard .content-area .content-row{
+	width: 100%;
+    margin: 0;
+    display: flex;
+    margin: 0 auto 20px;
+}
+#admin-dashboard .content-area .left-panel-cont{
+	flex-basis: 25%;
+	background-color: #fff;
+	padding: 18px;
+	box-sizing: border-box;
+	text-align: center;
+}
+#admin-dashboard .content-area .left-panel-cont h4{
+	font: 36px/40px Segoe;
+	color: #9f9f9f;
+	padding: 25px 0 0;
+}
+#admin-dashboard .content-area .left-panel-cont h3{
+	font: 50px/54px SegoeB;
+	color: #9f9f9f;
+	padding: 5px 0 25px;
+}
+#admin-dashboard .content-area .left-panel-cont a{
+	font: 14px/18px Segoe;
+	color: #fff;
+	display: inline-block;
+	text-align: center;
+	padding: 8px 35px;
+	background-color: #4977fc;
+	text-decoration: none;
+	border-radius: 20px;
+	margin-bottom: 10px;
+	border: 2px solid #4977fc;
+	transition: 0.5s ease-in-out;
+}
+#admin-dashboard .content-area .left-panel-cont a:hover{
+	background: #fff;
+	color: #4977fc;
+}
+#admin-dashboard .content-area .right-panel-cont{
+	flex-basis: 75%;
+	background-color: #fff;
+	padding: 18px;
+	margin-left: 20px;
+	box-sizing: border-box;
+}
+#admin-dashboard .content-area .right-cont-admin{
+	flex-basis: 100%;
+	margin-left: 0;
+}
+#admin-dashboard .content-area .right-panel-cont .submitted-assignment span{
+	font: 14px/18px Segoe;
+	color: #9f9f9f;
+	display: block;
+}
+#admin-dashboard .content-area .right-panel-cont .submitted-assignment .list-assign{
+	display: flex;
+	width: 100%;
+}
+#admin-dashboard .content-area .right-panel-cont .submitted-assignment .list-assign .list-div{
+	flex-basis: 30%;
+	padding: 20px;
+	background-color: #fff;
+	box-shadow: 0px 0px 6px rgba(17,119,252,0.3);
+	text-align: center;
+	margin: 15px;
+}
+#admin-dashboard .content-area .submitted-assignment .list-assign .list-div .file-img{
+	font-size: 46px;
+	color: #4977fc;
+}
+#admin-dashboard .content-area .submitted-assignment .list-assign .list-div .file-title a{
+	display: block;
+	margin: 8px 0 5px;
+	font: 16px/20px Segoe;
+	color: #4977fc;
+	text-decoration: none;
+	float: none; 	
+}
+#admin-dashboard .content-area .submitted-assignment a{
+	text-decoration: none;
+	float: right;
+	font: 14px/18px Segoe;
+	color: #4977fc;
+}
+#admin-dashboard .content-area .right-panel-cont .pending-assignment span{
+	font: 14px/18px Segoe;
+	color: #9f9f9f;
+	display: block;
+}
+#admin-dashboard .content-area .right-panel-cont .pending-assignment .list-assign{
+	display: flex;
+	width: 100%;
+}
+#admin-dashboard .content-area .right-panel-cont .pending-assignment .list-assign .list-div{
+	flex-basis: 30%;
+	padding: 20px;
+	background-color: #fff;
+	box-shadow: 0px 0px 6px rgba(17,119,252,0.3);
+	text-align: center;
+	margin: 15px;
+}
+#admin-dashboard .content-area .pending-assignment .list-assign .list-div .file-img{
+	font-size: 46px;
+	color: #4977fc;
+}
+#admin-dashboard .content-area .pending-assignment .list-assign .list-div .file-title a{
+	display: block;
+	margin: 8px 0 5px;
+	font: 16px/20px Segoe;
+	color: #4977fc;
+	text-decoration: none;
+	float: none; 	
+}
+#admin-dashboard .content-area .pending-assignment a{
+	text-decoration: none;
+	float: right;
+	font: 14px/18px Segoe;
+	color: #4977fc;
+}
+/*-----------------------------Students Asignments-----------------------------------*/
+#submit-assignments .content-area .content-row{
+	width: 100%;
+	background-color: #fff;
+	padding: 20px;
+	box-sizing: border-box;
+}
+#pending-assignments .content-area .content-row{
+	width: 100%;
+	background-color: #fff;
+	padding: 20px;
+	box-sizing: border-box;
+}
+#complete-assignments .content-area .content-row{
+	width: 100%;
+	background-color: #fff;
+	padding: 20px;
+	box-sizing: border-box;
+}
+#complete-assignments table tr td .del-cta{
+	float: right;
+}
+
+/*-----------------------------Create & View Asignments-----------------------------------*/
+#create-assignments .content-area .content-row{
+	width: 100%;
+	background-color: #fff;
+	padding: 20px;
+	box-sizing: border-box;
+}
+#create-assignments .content-row h5{
+	font: 35px/39px Segoe;
+	color: #4977fc;
+	text-transform: uppercase;
+	font-weight: 500;
+	padding: 0 0 20px;
+}
+#create-assignments form{
+	width: 100%;
+}
+#create-assignments form .input-grp, #create-assignments form .choose-file,
+#create-assignments form .submit-div{
+	margin: 15px 0 0;
+}
+#create-assignments form .input-grp input{
+	padding: 8px 10px;
+	width: 45%;
+	font: 15px/19px Segoe;
+}
+#create-assignments form .input-grp textarea{
+	resize: none;
+	padding: 8px 10px;
+	width: 45%;
+	font: 15px/19px Segoe;	
+}
+#create-assignments form .choose-file h6{
+	padding: 0 0 15px;
+	font: 17px/21px Segoe;
+	color: #9f9f9f;	
+}
+#create-assignments form .choose-file input{
+	font: 13px/17px Segoe;	
+}
+#create-assignments form .submit-div button{
+	font: 15px/19px Segoe;
+	padding: 5px 32px;
+	background: #4977fc;
+	border: 2px solid #4977fc;
+	color: #fff;
+	cursor: pointer;	
+}
+#view-assignments .content-area .content-row{
+	width: 100%;
+	background-color: #fff;
+	padding: 20px;
+	box-sizing: border-box;
+}
+#view-assignments .content-row h5{
+	font: 35px/39px Segoe;
+	color: #4977fc;
+	text-transform: uppercase;
+	font-weight: 500;
+	padding: 0 0;
+}
+#view-assignments .viewform{
+	width: 100%;
+}
+#view-assignments .viewform .subject, #view-assignments .viewform .choose-file,
+#view-assignments .viewform .submit-div{
+	margin: 15px 0 0;
+}
+#view-assignments .viewform .subject{
+	padding: 8px 0px;
+	width: 45%;
+	font: 15px/19px Segoe;
+	color: #9f9f9f;
+}
+#view-assignments .viewform .assignee{
+	padding: 8px 0px;
+	font: 15px/19px Segoe;
+	color: #9f9f9f;
+}
+#view-assignments .viewform .description{
+	padding: 8px 0px;
+	width: 45%;
+	font: 15px/19px Segoe;	
+	color: #9f9f9f;
+}
+#view-assignments .viewform .files{
+	padding: 15px 0;
+	font: 13px/17px Segoe;
+	color: #9f9f9f;
+	width: 45%;	
+	color: #fff;
+}
+#view-assignments .viewform .files span{
+	display: inline-block;
+	margin: 0 10px 0 0;
+	background: #4977fc;
+	padding: 5px 10px;
+}
+#view-assignments .viewform .submit-div button{
+	font: 15px/19px Segoe;
+	padding: 5px 32px;
+	background: #4977fc;
+	border: 2px solid #4977fc;
+	color: #fff;	
+	cursor: pointer;
+}
+#completed-assignments .content-area .content-row{
+	width: 100%;
+	background-color: #fff;
+	padding: 20px;
+	box-sizing: border-box;
+}
+#completed-assignments .content-row h5{
+	font: 35px/39px Segoe;
+	color: #4977fc;
+	text-transform: uppercase;
+	font-weight: 500;
+	padding: 0 0 20px;
+}
+#completed-assignments form{
+	width: 100%;
+}
+#completed-assignments form .input-grp, #completed-assignments form .choose-file,
+#completed-assignments form .submit-div{
+	margin: 15px 0 0;
+}
+#completed-assignments form .input-grp input{
+	padding: 8px 10px;
+	width: 45%;
+	font: 15px/19px Segoe;
+}
+#completed-assignments form .input-grp textarea{
+	resize: none;
+	padding: 8px 10px;
+	width: 45%;
+	font: 15px/19px Segoe;	
+}
+#completed-assignments form .choose-file h6{
+	padding: 0 0 15px;
+	font: 17px/21px Segoe;
+	color: #9f9f9f;	
+}
+#completed-assignments form .choose-file input{
+	font: 13px/17px Segoe;	
+}
+#completed-assignments form .submit-div button{
+	font: 15px/19px Segoe;
+	padding: 5px 32px;
+	background: #4977fc;
+	border: 2px solid #4977fc;
+	color: #fff;
+	cursor: pointer;	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
