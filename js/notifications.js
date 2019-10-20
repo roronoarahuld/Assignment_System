@@ -51,7 +51,7 @@ document.getElementById("notify-corner").innerHTML =
 								'</ul>'+
 							'</li>'+
 							'<li id="name-sub">'+
-								'<span>Poonam <i class="fas fa-chevron-down"></i></span>'+
+								'<span id="stexp_id">User <i class="fas fa-chevron-down"></i></span>'+
 								'<ul class="name-drop">'+
 									'<li>'+
 										'<a href="settings.php">Settings</a>'+
