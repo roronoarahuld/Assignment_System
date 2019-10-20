@@ -1,3 +1,10 @@
+<?php
+$getStr = $_GET["asmu"];
+$getStr2 = $_GET["asmi"];
+$strUser = openssl_decrypt($getStr,"AES-128-ECB","EPS");
+$strID = openssl_decrypt($getStr2,"AES-128-ECB","EPS");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +30,7 @@
 				<div class="content-row">
 					<div class="left-panel-cont">
 						<h4>Welcome</h4>
-						<h3>Poonam</h3>
+						<h3><?php echo $strUser; ?></h3>
 						<a href="javascript:void">Go to settings</a>
 					</div>
 					<div class="right-panel-cont">
@@ -154,6 +161,13 @@
 </body>
 <script type="text/javascript" src="js\jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js\main.js"></script>
+<script type="text/javascript">
+    function mynameFunc(variable){
+        var sName = document.getElementById(variable);
+        sName.innerHTML = "<?php echo $strUser ?>"+" "+'<i class="fas fa-chevron-down"></i>';
+        }   
+    mynameFunc("stexp_id");
+</script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$(".dash-li svg").css("fill","#4977fc");
